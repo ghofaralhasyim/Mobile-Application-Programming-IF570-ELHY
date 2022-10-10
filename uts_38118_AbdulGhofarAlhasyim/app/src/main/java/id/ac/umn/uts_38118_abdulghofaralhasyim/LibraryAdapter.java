@@ -37,14 +37,13 @@ public class LibraryAdapter extends RecyclerView.Adapter<LibraryAdapter.LibraryV
     public void onBindViewHolder(@NonNull LibraryViewHolder holder, @SuppressLint("RecyclerView") int position) {
         SourceVideo mSumberSfx = mListVideo.get(position);
         holder.tvTitle.setText(mSumberSfx.getTitle());
-        holder.btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        holder.btnDelete.setOnClickListener(v -> {
+//            HOW TO OPEN DIALOG ON RECYCLE VIEW ? HMMMMMMMMM
                 mListVideo.remove(position);
                 notifyItemRemoved(position);
-            }
         });
     }
+
 
     @Override
     public int getItemCount() {

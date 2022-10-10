@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.LinkedList;
 
-public class Library extends AppCompatActivity {
+public class Library extends AppCompatActivity{
     RecyclerView rvSourceVideo;
     LibraryAdapter mAdapter;
     ImageButton btnDelete;
@@ -65,6 +65,12 @@ public class Library extends AppCompatActivity {
             startActivity(homeIntent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public void openDialog() {
+        Delete deleteView = new Delete();
+        deleteView.show(getSupportFragmentManager(), "example dialog");
     }
 
 }
