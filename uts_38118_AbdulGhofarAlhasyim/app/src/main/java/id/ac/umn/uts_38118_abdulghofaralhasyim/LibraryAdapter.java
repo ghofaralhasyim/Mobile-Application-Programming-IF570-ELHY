@@ -1,12 +1,15 @@
 package id.ac.umn.uts_38118_abdulghofaralhasyim;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -38,9 +41,23 @@ public class LibraryAdapter extends RecyclerView.Adapter<LibraryAdapter.LibraryV
         SourceVideo mSumberSfx = mListVideo.get(position);
         holder.tvTitle.setText(mSumberSfx.getTitle());
         holder.btnDelete.setOnClickListener(v -> {
-//            HOW TO OPEN DIALOG ON RECYCLE VIEW ? HMMMMMMMMM
+//                mListVideo.remove(position);
+//                notifyItemRemoved(position);
+            final Dialog dialog = new Dialog(mContext);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCancelable(true);
+            dialog.setContentView(R.layout.delete_dialog);
+            Button confirm = dialog.findViewById(R.id.delete);
+            Button cancel = dialog.findViewById(R.id.cancel);
+            confirm.setOnClickListener(view -> {
                 mListVideo.remove(position);
                 notifyItemRemoved(position);
+                dialog.dismiss();
+            });
+            cancel.setOnClickListener(view -> {
+                dialog.dismiss();
+            });
+            dialog.show();
         });
     }
 

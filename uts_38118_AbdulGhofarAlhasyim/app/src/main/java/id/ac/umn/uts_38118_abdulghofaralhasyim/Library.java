@@ -67,10 +67,4 @@ public class Library extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
-
-    public void openDialog() {
-        Delete deleteView = new Delete();
-        deleteView.show(getSupportFragmentManager(), "example dialog");
-    }
-
 }
